@@ -1,0 +1,61 @@
+[user]
+name = Jean-Francois Roche
+email = jfroche@affinitic.be
+signingkey = 69EA19A0
+
+[alias]
+amend = commit --amend -a
+# list branches sorted by last modified
+b = "!git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'"
+br = branch
+co = checkout
+st = status
+ci = commit -v
+dt = difftool
+edit = "!vim `git ls-files -m` -p"
+fetchall = fetch -v --all
+filelog = log -u
+gra = "!f() { A=$(pwd) && TOPLEVEL=$(git rev-parse --show-toplevel) && cd $TOPLEVEL && git grep --full-name -In $1 | xargs -I{} echo $TOPLEVEL/{} && cd $A; }; f"
+grep = ag -i
+lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(cyan)<%an>%Creset' --abbrev-commit --date=relative
+la = "!git config -l | grep alias | cut -c 7-"
+l = ! git lg -n25
+log-me    = !UN=$(git config user.name)&& git log --author="\"$UN\"" --pretty=format:'%h %cd %s' --date=short
+log-nice  = log --graph --decorate --pretty=oneline --abbrev-commit
+s = status -s
+subup = submodule update --init --recursive
+stsh = stash --keep-index
+staash = stash --include-untracked
+staaash = stash --all
+stl = stash list
+wdiff = diff --word-diff
+[init]
+templatedir = /home/jfroche/projects/affinitic/affinitic.git.hooks
+
+[color]
+ui = true
+
+[push]
+default = simple
+
+[rebase]
+autoStash = true
+
+[dude]
+interval = 30
+icon = /home/jfroche/.git-dude/github_32.png
+
+[branch]
+autosetuprebase = always
+
+[diff]
+tool = meld
+
+[difftool]
+prompt = false
+
+[mergetool]
+prompt = false
+
+[github]
+user = jfroche
